@@ -86,7 +86,7 @@ print("Fake News" if prediction[0] == 1 else "Real News")
 ```
 
 ## Requirements
-- Python 3.7+
+- Python 3.8+
 - scikit-learn
 - nltk
 - imbalanced-learn
@@ -95,6 +95,7 @@ print("Fake News" if prediction[0] == 1 else "Real News")
 - seaborn
 - pandas
 - numpy
+- streamlit
 
 ## Results
 [Include some key visualizations or results from your notebook]
