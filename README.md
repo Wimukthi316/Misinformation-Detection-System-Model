@@ -58,13 +58,20 @@ pip install -r requirements.txt
 ```
 
 ## Usage
+### Web App (Recommended)
+Run the interactive Streamlit web application:
+```bash
+streamlit run app.py
+```
+Then open your browser to `http://localhost:8501` to use the web interface.
+
 ### Training
 Run the Jupyter notebook `notebooks/True_Fake_Optimized_V_1.ipynb` to train the models.
 
-### Prediction
+### Direct Prediction
 ```python
 from joblib import load
-import pandas as pd
+from src.true_fake_optimized_v_1 import advanced_text_cleaning  # Import cleaning function
 
 # Load model and vectorizer
 model = load('models/best_misinfo_detection_model.joblib')
@@ -72,8 +79,10 @@ vectorizer = load('models/tfidf_vectorizer.joblib')
 
 # Example prediction
 text = "Your news text here"
-# Preprocess text (use the cleaning function from the notebook)
-# Then vectorize and predict
+cleaned = advanced_text_cleaning(text)
+text_tfidf = vectorizer.transform([cleaned])
+prediction = model.predict(text_tfidf)
+print("Fake News" if prediction[0] == 1 else "Real News")
 ```
 
 ## Requirements
