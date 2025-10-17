@@ -21,13 +21,36 @@ The model is trained on a combination of datasets:
 - **F1-Score**: [Insert F1 score from your results]
 - **Accuracy**: [Insert accuracy from your results]
 
+## Project Structure
+```
+misinformation-detection-system/
+├── data/                          # Dataset files
+│   ├── Constraint_English_Test.csv
+│   ├── Constraint_English_Train.csv
+│   ├── Constraint_English_Val.csv
+│   ├── Fake.csv
+│   └── True.csv
+├── models/                        # Trained models and vectorizers
+│   ├── best_misinfo_detection_model.joblib
+│   ├── tfidf_vectorizer.joblib
+│   └── model_metadata.joblib
+├── notebooks/                     # Jupyter notebooks
+│   └── True_Fake_Optimized_V_1.ipynb
+├── src/                           # Python scripts
+│   └── true_fake_optimized_v_1.py
+├── docs/                          # Documentation (if needed)
+├── .gitignore                     # Git ignore file
+├── README.md                      # Project documentation
+└── requirements.txt               # Python dependencies
+```
+
 ## Files Description
-- `True_Fake_Optimized_V_1.ipynb`: Main Jupyter notebook with complete implementation
-- `true_fake_optimized_v_1.py`: Python script version
-- `best_misinfo_detection_model.joblib`: Trained best model
-- `tfidf_vectorizer.joblib`: TF-IDF vectorizer for text processing
-- `model_metadata.joblib`: Model metadata and performance metrics
-- CSV files: Training datasets
+- `notebooks/True_Fake_Optimized_V_1.ipynb`: Main Jupyter notebook with complete implementation
+- `src/true_fake_optimized_v_1.py`: Python script version
+- `models/best_misinfo_detection_model.joblib`: Trained best model
+- `models/tfidf_vectorizer.joblib`: TF-IDF vectorizer for text processing
+- `models/model_metadata.joblib`: Model metadata and performance metrics
+- `data/*.csv`: Training datasets
 
 ## Installation
 ```bash
@@ -36,7 +59,7 @@ pip install -r requirements.txt
 
 ## Usage
 ### Training
-Run the Jupyter notebook `True_Fake_Optimized_V_1.ipynb` to train the models.
+Run the Jupyter notebook `notebooks/True_Fake_Optimized_V_1.ipynb` to train the models.
 
 ### Prediction
 ```python
@@ -44,8 +67,8 @@ from joblib import load
 import pandas as pd
 
 # Load model and vectorizer
-model = load('best_misinfo_detection_model.joblib')
-vectorizer = load('tfidf_vectorizer.joblib')
+model = load('models/best_misinfo_detection_model.joblib')
+vectorizer = load('models/tfidf_vectorizer.joblib')
 
 # Example prediction
 text = "Your news text here"
